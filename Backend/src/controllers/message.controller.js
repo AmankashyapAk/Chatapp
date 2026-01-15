@@ -123,21 +123,3 @@ export const markMessagesSeen = async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 };
-
-io.on("connection", (socket) => {
-  console.log("User connected:", socket.id);
-
-  socket.on("typing", ({ senderId, receiverId }) => {
-    const receiverSocketId = getReceiverSocketId(receiverId);
-    if (receiverSocketId) {
-      io.to(receiverSocketId).emit("typing", { senderId });
-    }
-  });
-
-  socket.on("stopTyping", ({ senderId, receiverId }) => {
-    const receiverSocketId = getReceiverSocketId(receiverId);
-    if (receiverSocketId) {
-      io.to(receiverSocketId).emit("stopTyping", { senderId });
-    }
-  });
-});
