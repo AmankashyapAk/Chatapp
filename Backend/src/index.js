@@ -7,7 +7,7 @@ import messageRoutes from "./routes/message.route.js";
 
 import { connectDB } from "./lib/db.js";
 import { app, server } from "./lib/socket.js";
-import { path } from "path";
+import path from "path";
 dotenv.config();
 // const app = express();
 const __dirname = path.resolve();
