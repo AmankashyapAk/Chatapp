@@ -30,10 +30,15 @@ app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 const PORT = process.env.PORT;
 
+console.log("dirname:");
 if (process.env.NODE_ENV === "production") {
+  console.log("dirname2222:");
+
   app.use(express.static(path.join(__dirname, "../ChatApp/dist")));
 
-  app.get("*", (req, res) => {
+  app.get("/", (req, res) => {
+    console.log("dirname399:");
+
     res.sendFile(path.resolve(__dirname, "../ChatApp/dist/index.html"));
   });
 }
